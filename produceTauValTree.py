@@ -60,13 +60,12 @@ def removeOverlap(all_jets, gen_leptons, dR2=0.25):
 
 
 def isGenLepton(lep_cand, pid):
-    # more relaxed definition of leptons faking taus: select also particles that radiated
-    # and would otherwise fail isPromptFinalState()
     return (abs(lep_cand.pdgId()) == pid and
-            (lep_cand.statusFlags().isPrompt() or lep_cand.isDirectPromptTauDecayProductFinalState()) and
+            lep_cand.status() == 1 and
+            (lep_cand.isPromptFinalState() or lep_cand.isDirectPromptTauDecayProductFinalState()) and
             lep_cand.pt() > 20 and
             abs(lep_cand.eta()) < 2.3)
-            
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -128,12 +127,16 @@ if __name__ == '__main__':
                 result = subprocess.check_output(
                     "mkdir -p {outputFileName}".format(outputFileName=outputFileName), shell=True)
 
-        genJetssuffix = ""
+        genSuffix = ""
         if not useRecoJets and (runtype in jet_run_types):
-            genJetssuffix = "_genJets"
+            genSuffix = "_genJets"
+        if runtype in muon_run_types :
+            genSuffix = "_genMuon"
+        if runtype in ele_run_types :
+            genSuffix = "_genEle"
 
         outputFileName += 'Myroot_' + RelVal + '_' + \
-            globalTag + '_' + runtype + genJetssuffix + '.root'
+            globalTag + '_' + runtype + genSuffix + '.root'
     else:
         if "/" in outputFileName and outputFileName[0] != "/":
             print "location of output file has a dir structure but doesn't start with dash"
