@@ -2,15 +2,23 @@ import os
 import argparse
 import subprocess
 import pprint
+import sys
 
 from relValTools import addArguments
-
+import Validation.RecoTau.webplotting as webplotting
 
 pp = pprint.PrettyPrinter(indent=4)
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+    skipProduce = sys.argv[-1]
+    skipProduceTauValTree = False
+    if skipProduce == '--skip' :
+        skipProduceTauValTree = True
+    
+
     addArguments(parser, produce=True, compare=True)
     args = parser.parse_args()
 
@@ -41,26 +49,28 @@ if __name__ == '__main__':
     if debug:
         dd += ' --debug'
 
-    for i, relval in enumerate(relVals):
-        inputfile = ' --inputfile ' + inputfiles[i] if len(inputfiles) > 0 else ''
+    if skipProduceTauValTree==False :
+        for i, relval in enumerate(relVals):
+            inputfile = ' --inputfile ' + inputfiles[i] if len(inputfiles) > 0 else ''
 
-        command = 'python ' + scriptPath + 'produceTauValTree.py --release ' + relval + \
-            ' --globalTag ' + globalTags[i] + \
-            inputfile + \
-            ' --runtype ' + runtype + \
-            ' --maxEvents ' + str(maxEvents) + \
-            useRecoJets * ' -u ' + \
-            ' -s ' + storageSite + \
-            ' -l ' + localdir + \
-            ' --tauCollection ' + tauCollection + mvaidstr + dd
-        # + (len(outputFileName) > 0) * (' --outputFileName ' + outputFileName)
+            command = 'python ' + scriptPath + 'produceTauValTree.py --release ' + relval + \
+                ' --globalTag ' + globalTags[i] + \
+                inputfile + \
+                ' --runtype ' + runtype + \
+                ' --maxEvents ' + str(maxEvents) + \
+                useRecoJets * ' -u ' + \
+                ' -s ' + storageSite + \
+                ' -l ' + localdir + \
+                ' --tauCollection ' + tauCollection + mvaidstr + dd
+            + (len(outputFileName) > 0) * (' --outputFileName ' + outputFileName)
 
-        print '===================='
-        print command
-        print '===================='
-        result = subprocess.check_output(command, shell=True)
-        pp.pprint(result)
 
+            print '===================='
+            print command
+            print '===================='
+            result = subprocess.check_output(command, shell=True)
+            pp.pprint(result)
+    
     onebin = ' -b' if onebin else ''
     globalTagsstr = ' '.join(globalTags)
     releases = ' '.join(relVals)
@@ -74,3 +84,6 @@ if __name__ == '__main__':
         print command
         print '===================='
         os.system(command)
+    
+    webplotting.webplotting(input_dir="./compare_{0}".format(runtype), recursive=True)
+    print "FINISHED SUCCESSFULLY"

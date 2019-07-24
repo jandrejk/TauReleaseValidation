@@ -28,7 +28,7 @@ from relValTools import addArguments, getFilesFromEOS, \
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(True)
 
-tau_run_types = ['ZTT', 'ZpTT', 'TTbarTau', 'TenTaus']
+tau_run_types = ['DYToLL','ZTT', 'ZpTT', 'TTbarTau', 'TenTaus','TTbar']
 jet_run_types = ['QCD', 'TTbar']
 muon_run_types = ['ZMM', 'ZpMM']
 ele_run_types = ['ZEE']

@@ -6,27 +6,19 @@ import eostools
 
 globaldebug = False
 
-runtype_to_sample = {
-    'ZTT': 'RelValZTT_13',
-    'ZMM': 'RelValZMM_13',
-    'ZpMM': 'RelValZpMM_13',
-    'ZEE': 'RelValZEE_13',
-    'QCD': 'RelValQCD_FlatPt_15_3000HS_13',
-    'TTbar': 'RelValTTbar_13',
-    'TTbarTau': 'RelValTTbar_13',
-    'ZpTT': 'RelValZpTT_1500_13',
-    'TenTaus': 'RelValTenTau_15_500',
-}
+#FIXME: This needs some fixing for phase 2 samples with 14 TeV in their name
+from sample_mapping import runtype_to_sample
 
 
 def addArguments(parser, produce=True, compare=False):
-    parser.add_argument('--runtype', choices=['ZTT', 'ZEE', 'ZMM', 'ZpMM', 'QCD', 'TTbar', 'TTbarTau', 'ZpTT', 'TenTaus'], help='choose sample type')
+    parser.add_argument('--runtype', choices=['DYToLL','ZTT', 'ZEE', 'ZMM', 'ZpMM', 'QCD', 'TTbar', 'TTbarTau', 'ZpTT', 'TenTaus'], help='choose sample type')
     parser.add_argument('-i', '--inputfiles', default=[], nargs='*', help="List of files locations [Default: %(default)s]")
 
     # useful for debugging
     parser.add_argument('-n', '--maxEvents', default=-1, type=int, help='Number of events that will be analyzed (-1 = all events) [Default: %(default)s]')
     parser.add_argument('--debug', default=False, help="Debug option [Default: %(default)s]", action="store_true")
     parser.add_argument('--dryRun', default=False, action="store_true",  help='Dry run - no plots [Default: %(default)s]')
+    parser.add_argument('--skip', default=False, action="store_true",  help='skip production of root files and make plots directly')
 
     if produce:
         parser.add_argument('--release', default="CMSSW_9_4_0_pre1", help='Release')

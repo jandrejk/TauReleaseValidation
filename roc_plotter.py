@@ -48,6 +48,7 @@ class ROCPlotter(object):
         self.ds_background_files = self.args.ds_background_files
         self.ds_scan_variable = self.args.ds_scan_variable
 
+        print self.ds_signal_files
     @staticmethod
     def checkDirExists(path="", critical=False):
         if not os.path.isdir(path):
