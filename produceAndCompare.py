@@ -68,9 +68,9 @@ if __name__ == '__main__':
             print '===================='
             print command
             print '===================='
-            result = subprocess.check_output(command, shell=True)
-            pp.pprint(result)
-    
+            # result = subprocess.check_output(command, shell=True)
+            # pp.pprint(result)
+    exit(0)
     onebin = ' -b' if onebin else ''
     globalTagsstr = ' '.join(globalTags)
     releases = ' '.join(relVals)

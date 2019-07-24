@@ -32,32 +32,32 @@ all_tau_ids = [
     ('photonPtSumOutsideSignalCone', float),
     ('decayModeFinding', int),
     ('decayModeFindingNewDMs', int),
-    # deepTauIDv2 vs jet discriminator
-    ("byDeepTau2017v2VSjetraw", float),
-    ("byVVVLooseDeepTau2017v2VSjet", int),
-    ("byVVLooseDeepTau2017v2VSjet", int),
-    ("byVLooseDeepTau2017v2VSjet", int),
-    ("byLooseDeepTau2017v2VSjet", int),
-    ("byMediumDeepTau2017v2VSjet", int),
-    ("byTightDeepTau2017v2VSjet", int),
-    ("byVTightDeepTau2017v2VSjet", int),
-    ("byVVTightDeepTau2017v2VSjet", int),
-    # deepTauIDv2 vs electron discriminator
-    ("byDeepTau2017v2VSeraw", float),
-    ("byVVVLooseDeepTau2017v2VSe", int),
-    ("byVVLooseDeepTau2017v2VSe", int),
-    ("byVLooseDeepTau2017v2VSe", int),
-    ("byLooseDeepTau2017v2VSe", int),
-    ("byMediumDeepTau2017v2VSe", int),
-    ("byTightDeepTau2017v2VSe", int),
-    ("byVTightDeepTau2017v2VSe", int),
-    ("byVVTightDeepTau2017v2VSe", int),
-    # deepTauIDv2 vs muon discriminator
-    ("byDeepTau2017v2VSmuraw", float),
-    ("byVLooseDeepTau2017v2VSmu", int),
-    ("byLooseDeepTau2017v2VSmu", int),
-    ("byMediumDeepTau2017v2VSmu", int),
-    ("byTightDeepTau2017v2VSmu", int),
+    # # deepTauIDv2 vs jet discriminator
+    # ("byDeepTau2017v2VSjetraw", float),
+    # ("byVVVLooseDeepTau2017v2VSjet", int),
+    # ("byVVLooseDeepTau2017v2VSjet", int),
+    # ("byVLooseDeepTau2017v2VSjet", int),
+    # ("byLooseDeepTau2017v2VSjet", int),
+    # ("byMediumDeepTau2017v2VSjet", int),
+    # ("byTightDeepTau2017v2VSjet", int),
+    # ("byVTightDeepTau2017v2VSjet", int),
+    # ("byVVTightDeepTau2017v2VSjet", int),
+    # # deepTauIDv2 vs electron discriminator
+    # ("byDeepTau2017v2VSeraw", float),
+    # ("byVVVLooseDeepTau2017v2VSe", int),
+    # ("byVVLooseDeepTau2017v2VSe", int),
+    # ("byVLooseDeepTau2017v2VSe", int),
+    # ("byLooseDeepTau2017v2VSe", int),
+    # ("byMediumDeepTau2017v2VSe", int),
+    # ("byTightDeepTau2017v2VSe", int),
+    # ("byVTightDeepTau2017v2VSe", int),
+    # ("byVVTightDeepTau2017v2VSe", int),
+    # # deepTauIDv2 vs muon discriminator
+    # ("byDeepTau2017v2VSmuraw", float),
+    # ("byVLooseDeepTau2017v2VSmu", int),
+    # ("byLooseDeepTau2017v2VSmu", int),
+    # ("byMediumDeepTau2017v2VSmu", int),
+    # ("byTightDeepTau2017v2VSmu", int),
 
 
 ]
@@ -98,9 +98,9 @@ def create_tau_ids(name, n_wps=7):
 
 
 tau_ids = {
-    'deepTauIDv2VSe':create_tau_ids(name='DeepTau2017v2VSe2017',n_wps=4),
-    'deepTauIDv2VSmu':create_tau_ids(name='DeepTau2017v2VSmu2017',n_wps=8),
-    'deepTauIDv2VSjet':create_tau_ids(name='DeepTau2017v2VSjet2017',n_wps=8),
+    # 'deepTauIDv2VSe':create_tau_ids(name='DeepTau2017v2VSe2017',n_wps=4),
+    # 'deepTauIDv2VSmu':create_tau_ids(name='DeepTau2017v2VSmu2017',n_wps=8),
+    # 'deepTauIDv2VSjet':create_tau_ids(name='DeepTau2017v2VSjet2017',n_wps=8),
     '2017v2':create_tau_ids('IsolationMVArun2017v2DBoldDMwLT2017'),
     '2017v1':create_tau_ids('IsolationMVArun2017v1DBoldDMwLT2017'),
     '2016v1':create_tau_ids('IsolationMVArun2v1DBoldDMwLT2016', 6),

@@ -269,7 +269,8 @@ if __name__ == '__main__':
             if index >= float(len(hvardict.items())) / (totalparts-1) * (part-1): break
             if index < float(len(hvardict.items())) / (totalparts-1) * (part-2): continue
                 
-        if runtype not in ['ZTT', 'TTbarTau','TenTaus','TTbar'] and h_name.find('pt_resolution') != -1:
+        # if runtype not in ['ZTT', 'TTbarTau','TenTaus','TTbar'] and h_name.find('pt_resolution') != -1:
+        if runtype not in ['ZTT', 'TTbarTau','TenTaus'] and h_name.find('pt_resolution') != -1:
             continue
 
         print "Doing",index+1, ":", h_name
