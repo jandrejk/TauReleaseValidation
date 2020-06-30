@@ -297,6 +297,7 @@ def makeEffPlotsVars(tree,
                      binning,
                      xtitle='', header='', addon='', marker=20, col=1):
 
+   
     _denomHist_ = TH1F('h_effp_' + addon,
                        'h_effp' + addon,
                        len(binning) - 1,
